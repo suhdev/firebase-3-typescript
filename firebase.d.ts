@@ -291,3 +291,6 @@ declare namespace firebase {
   
 }
 
+declare module 'firebase' {
+    export = firebase;
+}
