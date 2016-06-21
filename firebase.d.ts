@@ -992,7 +992,7 @@ declare namespace firebase {
      * @extends {DatabaseReference}
      * @extends {DatabaseQuery}
      */
-    export interface ThenableReference extends DatabaseReference,DatabaseQuery{
+    export interface ThenableReference extends DatabaseReference{
         
     }
     
