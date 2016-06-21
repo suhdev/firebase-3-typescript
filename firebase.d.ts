@@ -49,18 +49,8 @@ declare namespace firebase {
      * @param {string} [name] the name of the application defaults to [DEFAULT] 
      * @returns {FirebaseApplication} the initialized firebase application instance. 
      */
-    export function initializeApp(config:FirebaseConfig,
+    export function initializeApp(config:FirebaseConfig|FirebaseServiceConfig,
         name?:string):FirebaseApplication;
-    /**
-     * Initializes the firebase application. 
-     * 
-     * @export
-     * @param {FirebaseServiceConfig} config the firebase configuration, this can be either a user 
-     * @param {string} [name] the name of the application. 
-     * @returns {FirebaseApplication} the initialized firebase application instance.
-     */
-    export function initializeApp(config:FirebaseServiceConfig,
-        name?:string)
     
 
     /**
