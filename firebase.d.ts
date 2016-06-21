@@ -7,10 +7,15 @@ declare namespace firebase {
         databaseURL:string;
         storageBucket:string;
     }
+
+    export interface FirebaseConfigFile{
+        serviceAccount:string;
+        databaseURL:string;
+    }
     
     var apps:FirebaseApplication[];
     
-    export function initializeApp(config:FirebaseConfig,
+    export function initializeApp(config:FirebaseConfig|FirebaseConfigFile,
         name?:string):FirebaseApplication;
     export function storage():FirebaseStorage;
         
@@ -284,7 +289,7 @@ declare namespace firebase {
     
     export class FirebaseApplication{
         name:string;
-        options:FirebaseConfig;
+        options:FirebaseConfig|FirebaseConfigFile;
         auth():Auth;
         database():Database;
     }
