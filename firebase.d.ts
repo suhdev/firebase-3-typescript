@@ -938,14 +938,14 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        cancel(onComplete:CallbackWithError):Promise<void>;
+        cancel(onComplete?:CallbackWithError):Promise<void>;
         /**
          * (description)
          * 
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        remove(onComplete:CallbackWithError):Promise<void>;
+        remove(onComplete?:CallbackWithError):Promise<void>;
         /**
          * (description)
          * 
@@ -953,7 +953,7 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        set(value:any,onComplete:CallbackWithError):Promise<void>;
+        set(value:any,onComplete?:CallbackWithError):Promise<void>;
         /**
          * (description)
          * 
@@ -962,7 +962,7 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        setWithPriority(value:any,priority:number,onComplete:CallbackWithError):Promise<void>;
+        setWithPriority(value:any,priority:number,onComplete?:CallbackWithError):Promise<void>;
         /**
          * (description)
          * 
@@ -1087,7 +1087,7 @@ declare namespace firebase {
          * @param {Function} userCallback (description)
          * @returns {Promise<any>} (description)
          */
-        once(eventType:string,userCallback:Function):Promise<any>;
+        once(eventType:string,userCallback?:Function):Promise<any>;
         /**
          * (description)
          * 
@@ -1126,7 +1126,7 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {ThenableReference} (description)
          */
-        push(value:any,onComplete:CallbackWithError):ThenableReference; 
+        push(value:any,onComplete?:CallbackWithError):ThenableReference; 
         /**
          * (description)
          * 
@@ -1289,7 +1289,7 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        setPriority(priority:number,onComplete:CallbackWithError):Promise<void>;
+        setPriority(priority:number,onComplete?:CallbackWithError):Promise<void>;
         /**
          * (description)
          * 
@@ -1298,7 +1298,7 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        setWithPriority(newVal:any,newPriority:number,onComplete:CallbackWithError):Promise<void>;
+        setWithPriority(newVal:any,newPriority:number,onComplete?:CallbackWithError):Promise<void>;
         /**
          * (description)
          * 
@@ -1316,14 +1316,14 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        update(objectToMerge:any,onComplete:CallbackWithError):Promise<void>;
+        update(objectToMerge:any,onComplete?:CallbackWithError):Promise<void>;
         /**
          * (description)
          * 
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        remove(onComplete:CallbackWithError):Promise<void>;
+        remove(onComplete?:CallbackWithError):Promise<void>;
         /**
          * (description)
          * 
@@ -1331,7 +1331,7 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {Promise<void>} (description)
          */
-        set(newVal:any,onComplete:CallbackWithError):Promise<void>;
+        set(newVal:any,onComplete?:CallbackWithError):Promise<void>;
         
     }
     
