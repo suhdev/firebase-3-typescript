@@ -495,7 +495,7 @@ declare namespace firebase {
          * @param {UploadMetadata} metadata (description)
          * @returns {UploadTask} (description)
          */
-        put(blog:Blob,metadata:UploadMetadata):UploadTask;
+        put(blog:Blob|File, metadata?:UploadMetadata):UploadTask;
     }
     
     /**
@@ -900,7 +900,28 @@ declare namespace firebase {
      * @export
      * @class Auth
      */
-    export class Auth {
+    export class Auth {        
+        /**
+         * Sign out.
+         *
+         * @type {Promise<void>}
+         */
+        signOut(): Promise<void>;
+
+        /**
+         * Sign in via email/password.
+         *
+         * @type {Promise<User>}
+         */
+        signInWithEmailAndPassword(email: string, password:string): Promise<User>;
+
+        /**
+         * Creates a user via email/password.
+         *
+         * @type {Promise<User>}
+         */
+        createUserWithEmailAndPassword(email: string, password:string): Promise<User>;
+
         /**
          * (description)
          * 
@@ -1376,7 +1397,7 @@ declare namespace firebase {
          * @param {string} path the path to get a reference to.
          * @returns {DatabaseReference} 
          */
-        ref(path:string):DatabaseReference;
+        ref(path?:string):DatabaseReference;
         /**
          * Returns a reference to the root or the path specified in url. 
          * An exception is thrown if the url is not in the same domain as the current database. 
