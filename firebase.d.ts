@@ -902,6 +902,13 @@ declare namespace firebase {
      */
     export class Auth {
         /**
+         * Creates a user via email/password.
+         *
+         * @type {Promise<User>}
+         */
+        createUserWithEmailAndPassword(email: string, password:string): Promise<User>;
+
+        /**
          * (description)
          * 
          * @type {FirebaseApplication}
