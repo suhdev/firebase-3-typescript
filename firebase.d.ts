@@ -1397,7 +1397,7 @@ declare namespace firebase {
          * @param {string} path the path to get a reference to.
          * @returns {DatabaseReference} 
          */
-        ref(path:string):DatabaseReference;
+        ref(path?:string):DatabaseReference;
         /**
          * Returns a reference to the root or the path specified in url. 
          * An exception is thrown if the url is not in the same domain as the current database. 
