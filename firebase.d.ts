@@ -902,6 +902,13 @@ declare namespace firebase {
      */
     export class Auth {        
         /**
+         * Sign out.
+         *
+         * @type {Promise<void>}
+         */
+        signOut(): Promise<void>;
+
+        /**
          * Sign in via email/password.
          *
          * @type {Promise<User>}
