@@ -6,6 +6,16 @@
 ///<reference path="./es6-promise.d.ts"/>
 
 declare namespace firebase {
+    export namespace database {
+        export enum ServerValue{
+            TIMESTAMP,
+        }
+        
+        export function enableLogging();
+    }
+
+
+
 	/**
 	 * Browser configuration object. 
 	 * 
