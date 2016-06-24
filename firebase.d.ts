@@ -491,11 +491,11 @@ declare namespace firebase {
         /**
          * (description)
          * 
-         * @param {Blob} blog (description)
+         * @param {Blob} blob (description)
          * @param {UploadMetadata} metadata (description)
          * @returns {UploadTask} (description)
          */
-        put(blog:Blob|File, metadata?:UploadMetadata):UploadTask;
+        put(blob:Blob|File, metadata?:UploadMetadata):UploadTask;
     }
     
     /**
