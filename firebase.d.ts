@@ -11,7 +11,7 @@ declare namespace firebase {
             TIMESTAMP,
         }
 
-        export function enableLogging();
+        export function enableLogging(enable: boolean);
     }
 
 
@@ -1013,7 +1013,7 @@ declare namespace firebase {
      * @extends {DatabaseReference}
      * @extends {DatabaseQuery}
      */
-    export interface ThenableReference extends DatabaseReference{
+    export interface ThenableReference extends DatabaseReference, Promise<any>{
         
     }
     
@@ -1157,7 +1157,7 @@ declare namespace firebase {
          * @param {CallbackWithError} onComplete (description)
          * @returns {ThenableReference} (description)
          */
-        push(value:any,onComplete?:CallbackWithError):ThenableReference; 
+        push(value?:any,onComplete?:CallbackWithError):ThenableReference; 
         /**
          * (description)
          * 
@@ -1338,8 +1338,8 @@ declare namespace firebase {
          * @param {boolean} applyLocally (description)
          * @returns {Promise<TransactionResult>} (description)
          */
-        transaction(transationUpdate:any,onComplete:CallbackWithError,
-        applyLocally:boolean):Promise<TransactionResult>;
+        transaction(transationUpdate:any,onComplete?:CallbackWithError,
+        applyLocally?:boolean):Promise<TransactionResult>;
         /**
          * (description)
          * 
