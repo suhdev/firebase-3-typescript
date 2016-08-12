@@ -903,6 +903,17 @@ declare namespace firebase {
          */
         updateProfile(profile:UserProfile):Promise<void>;
     }
+
+    export interface ObserverFn{
+        (user:firebase.User):void; 
+    }
+
+    export namespace auth {
+        export interface Error {
+            code:string;
+            message:string;
+        }
+    }
         
     /**
      * (description)
@@ -944,6 +955,17 @@ declare namespace firebase {
          * @type {User}
          */
         currentUser:User;
+
+        /**
+         * Adds an observer for auth state changes.
+         * 
+         * @param {(firebase.Observer|ObserverFn)} nextOrObserver An observer object or a function triggered on change.
+         * @param {Function} [opt_error] Optional A function triggered on auth error.
+         * @param {Function} [opt_completed] Optional A function triggered when the observer is removed.
+         * @returns {Function} The unsubscribe function for the observer.
+        
+         */
+        onAuthStateChanged(nextOrObserver:firebase.Observer|ObserverFn, opt_error?:(err:firebase.auth.Error)=>void, opt_completed?:()=>void):Function; 
     }
     
     /**
