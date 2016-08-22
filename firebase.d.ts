@@ -11,7 +11,7 @@ declare namespace firebase {
             TIMESTAMP,
         }
 
-        export function enableLogging(enable: boolean);
+        export function enableLogging(enable: boolean): void;
     }
 
 
