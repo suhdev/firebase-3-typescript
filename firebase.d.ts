@@ -555,28 +555,30 @@ declare namespace firebase {
     
     
     
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface UserCredential
-     */
-    export interface UserCredential{
-        /**
-         * (description)
-         * 
-         * @type {User}
-         */
-        user:User;
-        /**
-         * (description)
-         * 
-         * @type {AuthCredential}
-         */
-        credential:auth.AuthCredential;
-    }
+    
 
     export namespace auth {
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface UserCredential
+         */
+        export interface UserCredential{
+            /**
+             * (description)
+             * 
+             * @type {User}
+             */
+            user:User;
+            /**
+             * (description)
+             * 
+             * @type {AuthCredential}
+             */
+            credential:auth.AuthCredential;
+        }
+
         /**
          * (description)
          * 
@@ -615,6 +617,7 @@ declare namespace firebase {
              * @returns {AuthCredential} (description)
              */
             credential(email:string,password:string):AuthCredential;
+            setCustomParameters(params:any);
         }
         
         /**
@@ -645,6 +648,7 @@ declare namespace firebase {
              * @returns {AuthCredential} (description)
              */
             credential(token:string):AuthCredential;
+            setCustomParameters(params:any);
         }
         
         /**
@@ -676,6 +680,7 @@ declare namespace firebase {
              * @type {string}
              */
             PROVIDER_ID:string;
+            setCustomParameters(params:any);
         }
         
         /**
@@ -706,6 +711,7 @@ declare namespace firebase {
              * @returns {AuthCredential} (description)
              */
             credential(token:string):AuthCredential;
+            setCustomParameters(params:any);
         }
         
         /**
@@ -731,6 +737,7 @@ declare namespace firebase {
              * @returns {AuthCredential} (description)
              */
             crendential(token:string,secret:string):AuthCredential;
+            setCustomParameters(params:any);
         }
 
         /**
@@ -776,6 +783,8 @@ declare namespace firebase {
              * @type {string}
              */
             providerId:string;
+
+            setCustomParameters(params:any);
         }
     }
     
@@ -864,7 +873,7 @@ declare namespace firebase {
          * @param {AuthProvider} provider (description)
          * @returns {Promise<UserCredential>} (description)
          */
-        linkWithPopup(provider:auth.AuthProvider):Promise<UserCredential>;
+        linkWithPopup(provider:auth.AuthProvider):Promise<auth.UserCredential>;
         /**
          * (description)
          * 
@@ -975,7 +984,88 @@ declare namespace firebase {
          * @returns {Function} The unsubscribe function for the observer.
         
          */
-        onAuthStateChanged(nextOrObserver:firebase.Observer|ObserverFn, opt_error?:(err:firebase.auth.Error)=>void, opt_completed?:()=>void):Function; 
+        onAuthStateChanged(nextOrObserver:firebase.Observer|ObserverFn, opt_error?:(err:firebase.auth.Error)=>void, opt_completed?:()=>void):Function;
+
+        /**
+         * getRedirectResult() returns firebase.Promise containing non-null firebase.auth.UserCredential
+         * 
+         * Returns a UserCredential from the redirect-based sign-in flow.
+         * 
+         * If sign-in succeeded, returns the signed in user. If sign-in was unsuccessful, fails with an error. If no redirect operation was called, returns a UserCredential with a null User.
+         * 
+         * @returns {Promise<any>}
+         * 
+         * @memberOf Auth
+         */
+        getRedirectResult():Promise<firebase.auth.UserCredential>;
+        
+        /**
+         * fetchProvidersForEmail(email) returns firebase.Promise containing non-null Array of string
+         * 
+         * Gets the list of provider IDs that can be used to sign in for the given email address. Useful for an "identifier-first" sign-in flow.
+         * 
+         * @param {string} email
+         * @returns {Promise<any>}
+         * 
+         * @memberOf Auth
+         */
+        fetchProvidersForEmail(email:string):Promise<string[]>; 
+
+        /**
+         * sendPasswordResetEmail(email) returns firebase.Promise containing void
+         * 
+         * Sends a password reset email to the given email address.
+         * To complete the password reset, call firebase.auth.Auth#confirmPasswordReset with the code supplied in the email sent to the user, along with the new password specified by the user.
+         * 
+         * @param {string} email
+         * 
+         * @memberOf Auth
+         */
+        sendPasswordResetEmail(email:string):Promise<void>; 
+
+        /**
+         * Asynchronously signs in as an anonymous user.
+         * 
+         * If there is already an anonymous user signed in, that user will be returned; otherwise, a new anonymous user identity will be created and returned.
+         * 
+         * 
+         * @memberOf Auth
+         */
+        signInAnonymously():Promise<firebase.User>; 
+
+        signInWithCredential(credential:firebase.auth.AuthCredential):Promise<firebase.User>; 
+
+        signInWithCustomToken(token:string):Promise<firebase.User>; 
+
+        signInWithPopup(provider:auth.AuthProvider):Promise<firebase.auth.UserCredential>;
+
+        signInWithRedirect(provider:auth.AuthProvider):Promise<void>;
+
+        /**
+         * verifyPasswordResetCode(code) returns firebase.Promise containing string. 
+         * 
+         * Checks a password reset code sent to the user by email or other out-of-band mechanism.
+         * 
+         * Returns the user's email address if valid.
+         * 
+         * Error Codes
+         *  <h3>auth/expired-action-code</h3>
+         *  Thrown if the password reset code has expired.
+         *  <h3>auth/invalid-action-code</h3>
+         *  Thrown if the password reset code is invalid. This can happen if the code is malformed or has already been used.
+         *  <h3>auth/user-disabled</h3>
+         *  Thrown if the user corresponding to the given password reset code has been disabled.
+         *  <h3>auth/user-not-found</h3>
+         *  Thrown if there is no user corresponding to the password reset code. This may have happened if the user was deleted between when the code was issued and when this method was called.
+         * 
+         * @param {string} code
+         * @returns {Promise<string>}
+         * 
+         * @memberOf Auth
+         */
+        verifyPasswordResetCode(code:string):Promise<string>;
+
+
     }
     
     /**
