@@ -3,8 +3,6 @@
 // Definitions by: Suhail Abood <https://github.com/suhdev/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-///<reference path="./es6-promise.d.ts"/>
-
 declare namespace firebase {
     export namespace database {
         export enum ServerValue{
@@ -555,20 +553,7 @@ declare namespace firebase {
         setMaxUploadRetryTime(time:number):void;
     }
     
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface AuthCredential
-     */
-    export interface AuthCredential{
-        /**
-         * (description)
-         * 
-         * @type {string}
-         */
-        provider:string;
-    }
+    
     
     /**
      * (description)
@@ -588,162 +573,215 @@ declare namespace firebase {
          * 
          * @type {AuthCredential}
          */
-        credential:AuthCredential;
+        credential:auth.AuthCredential;
+    }
+
+    export namespace auth {
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface AuthCredential
+         */
+        export interface AuthCredential{
+            /**
+             * (description)
+             * 
+             * @type {string}
+             */
+            provider:string;
+        }
+
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface EmailAuthProvider
+         * @extends {AuthProvider}
+         */
+        export class EmailAuthProvider implements AuthProvider {
+            providerId:string;
+            /**
+             * (description)
+             * 
+             * @type {string}
+             */
+            PROVIDER_ID:string;
+            /**
+             * (description)
+             * 
+             * @param {string} email (description)
+             * @param {string} password (description)
+             * @returns {AuthCredential} (description)
+             */
+            credential(email:string,password:string):AuthCredential;
+        }
+        
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface GithubAuthProider
+         * @extends {AuthProvider}
+         */
+        export class GithubAuthProider implements AuthProvider{
+            providerId:string;
+            /**
+             * (description)
+             * 
+             * @type {string}
+             */
+            PROVIDER_ID:string;
+            /**
+             * (description)
+             * 
+             * @param {string} scope (description)
+             */
+            addScope(scope:string):void;
+            /**
+             * (description)
+             * 
+             * @param {string} token (description)
+             * @returns {AuthCredential} (description)
+             */
+            credential(token:string):AuthCredential;
+        }
+        
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface GoogleAuthProvider
+         * @extends {AuthProvider}
+         */
+        export class GoogleAuthProvider implements AuthProvider{
+            providerId:string;
+            /**
+             * (description)
+             * 
+             * @param {string} scope (description)
+             */
+            addScope(scope:string):void;
+            /**
+             * (description)
+             * 
+             * @param {string} idToken (description)
+             * @param {string} accessToken (description)
+             * @returns {AuthCredential} (description)
+             */
+            credential(idToken:string,accessToken:string):AuthCredential;
+            /**
+             * (description)
+             * 
+             * @type {string}
+             */
+            PROVIDER_ID:string;
+        }
+        
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface FacebookAuthProvider
+         * @extends {AuthProvider}
+         */
+        export class FacebookAuthProvider implements AuthProvider{
+            providerId:string;
+            /**
+             * (description)
+             * 
+             * @type {string}
+             */
+            PROVIDER_ID:string;
+            /**
+             * (description)
+             * 
+             * @param {string} scope (description)
+             */
+            addScope(scope:string):void;
+            /**
+             * (description)
+             * 
+             * @param {string} token (description)
+             * @returns {AuthCredential} (description)
+             */
+            credential(token:string):AuthCredential;
+        }
+        
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface TwitterAuthProvider
+         * @extends {AuthProvider}
+         */
+        export class TwitterAuthProvider implements AuthProvider{
+            providerId:string;
+            /**
+             * (description)
+             * 
+             * @type {string}
+             */
+            PROVIDER_ID:string;
+            /**
+             * (description)
+             * 
+             * @param {string} token (description)
+             * @param {string} secret (description)
+             * @returns {AuthCredential} (description)
+             */
+            crendential(token:string,secret:string):AuthCredential;
+        }
+
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface ActionCodeInfoData
+         */
+        export interface ActionCodeInfoData{
+            /**
+             * (description)
+             * 
+             * @type {string}
+             */
+            email:string;
+        }
+        
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface ActionCodeInfo
+         */
+        export interface ActionCodeInfo {
+            /**
+             * (description)
+             * 
+             * @type {ActionCodeInfoData}
+             */
+            data:ActionCodeInfoData;
+        } 
+
+        /**
+         * (description)
+         * 
+         * @export
+         * @interface AuthProvider
+         */
+        export interface AuthProvider {
+            /**
+             * (description)
+             * 
+             * @type {string}
+             */
+            providerId:string;
+        }
     }
     
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface AuthProvider
-     */
-    export interface AuthProvider {
-        /**
-         * (description)
-         * 
-         * @type {string}
-         */
-        providerId:string;
-    }
     
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface EmailAuthProvider
-     * @extends {AuthProvider}
-     */
-    export interface EmailAuthProvider extends AuthProvider {
-        /**
-         * (description)
-         * 
-         * @type {string}
-         */
-        PROVIDER_ID:string;
-        /**
-         * (description)
-         * 
-         * @param {string} email (description)
-         * @param {string} password (description)
-         * @returns {AuthCredential} (description)
-         */
-        credential(email:string,password:string):AuthCredential;
-    }
     
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface GithubAuthProider
-     * @extends {AuthProvider}
-     */
-    export interface GithubAuthProider extends AuthProvider{
-        new ():GithubAuthProider;
-        /**
-         * (description)
-         * 
-         * @type {string}
-         */
-        PROVIDER_ID:string;
-        /**
-         * (description)
-         * 
-         * @param {string} scope (description)
-         */
-        addScope(scope:string):void;
-        /**
-         * (description)
-         * 
-         * @param {string} token (description)
-         * @returns {AuthCredential} (description)
-         */
-        credential(token:string):AuthCredential;
-    }
     
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface GoogleAuthProvider
-     * @extends {AuthProvider}
-     */
-    export interface GoogleAuthProvider extends AuthProvider{
-        new():GoogleAuthProvider;
-        /**
-         * (description)
-         * 
-         * @param {string} scope (description)
-         */
-        addScope(scope:string):void;
-        /**
-         * (description)
-         * 
-         * @param {string} idToken (description)
-         * @param {string} accessToken (description)
-         * @returns {AuthCredential} (description)
-         */
-        credential(idToken:string,accessToken:string):AuthCredential;
-        /**
-         * (description)
-         * 
-         * @type {string}
-         */
-        PROVIDER_ID:string;
-    }
-    
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface FacebookAuthProvider
-     * @extends {AuthProvider}
-     */
-    export interface FacebookAuthProvider extends AuthProvider{
-        /**
-         * (description)
-         * 
-         * @type {string}
-         */
-        PROVIDER_ID:string;
-        /**
-         * (description)
-         * 
-         * @param {string} scope (description)
-         */
-        addScope(scope:string):void;
-        /**
-         * (description)
-         * 
-         * @param {string} token (description)
-         * @returns {AuthCredential} (description)
-         */
-        credential(token:string):AuthCredential;
-    }
-    
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface TwitterAuthProvider
-     * @extends {AuthProvider}
-     */
-    export interface TwitterAuthProvider extends AuthProvider{
-        new():TwitterAuthProvider;
-        /**
-         * (description)
-         * 
-         * @type {string}
-         */
-        PROVIDER_ID:string;
-        /**
-         * (description)
-         * 
-         * @param {string} token (description)
-         * @param {string} secret (description)
-         * @returns {AuthCredential} (description)
-         */
-        crendential(token:string,secret:string):AuthCredential;
-    }
     
     /**
      * (description)
@@ -766,35 +804,7 @@ declare namespace firebase {
         photoURL:string;
     }
     
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface ActionCodeInfoData
-     */
-    export interface ActionCodeInfoData{
-        /**
-         * (description)
-         * 
-         * @type {string}
-         */
-        email:string;
-    }
     
-    /**
-     * (description)
-     * 
-     * @export
-     * @interface ActionCodeInfo
-     */
-    export interface ActionCodeInfo {
-        /**
-         * (description)
-         * 
-         * @type {ActionCodeInfoData}
-         */
-        data:ActionCodeInfoData;
-    } 
         
     /**
      * (description)
@@ -847,21 +857,21 @@ declare namespace firebase {
          * @param {AuthCredential} credentials (description)
          * @returns {Promise<User>} (description)
          */
-        link(credentials:AuthCredential):Promise<User>;
+        link(credentials:auth.AuthCredential):Promise<User>;
         /**
          * (description)
          * 
          * @param {AuthProvider} provider (description)
          * @returns {Promise<UserCredential>} (description)
          */
-        linkWithPopup(provider:AuthProvider):Promise<UserCredential>;
+        linkWithPopup(provider:auth.AuthProvider):Promise<UserCredential>;
         /**
          * (description)
          * 
          * @param {AuthCredential} credentil (description)
          * @returns {Promise<void>} (description)
          */
-        reauthenticate(credentil:AuthCredential):Promise<void>;
+        reauthenticate(credentil:auth.AuthCredential):Promise<void>;
         /**
          * (description)
          * 
