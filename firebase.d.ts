@@ -617,7 +617,7 @@ declare namespace firebase {
              * @returns {AuthCredential} (description)
              */
             credential(email:string,password:string):AuthCredential;
-            setCustomParameters(params:any);
+            setCustomParameters(params:any):void;
         }
         
         /**
@@ -648,7 +648,7 @@ declare namespace firebase {
              * @returns {AuthCredential} (description)
              */
             credential(token:string):AuthCredential;
-            setCustomParameters(params:any);
+            setCustomParameters(params:any):void;
         }
         
         /**
@@ -680,7 +680,7 @@ declare namespace firebase {
              * @type {string}
              */
             PROVIDER_ID:string;
-            setCustomParameters(params:any);
+            setCustomParameters(params:any):void;
         }
         
         /**
@@ -711,7 +711,7 @@ declare namespace firebase {
              * @returns {AuthCredential} (description)
              */
             credential(token:string):AuthCredential;
-            setCustomParameters(params:any);
+            setCustomParameters(params:any):void;
         }
         
         /**
@@ -737,7 +737,7 @@ declare namespace firebase {
              * @returns {AuthCredential} (description)
              */
             crendential(token:string,secret:string):AuthCredential;
-            setCustomParameters(params:any);
+            setCustomParameters(params:any):void;
         }
 
         /**
@@ -784,7 +784,7 @@ declare namespace firebase {
              */
             providerId:string;
 
-            setCustomParameters(params:any);
+            setCustomParameters(params:any):void;
         }
     }
     
